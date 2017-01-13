@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.DashboardActivity"
+            android:label="@string/title_activity_dashboard_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.BaseAcitivity"
+            android:label="@string/title_activity_base_acitivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
