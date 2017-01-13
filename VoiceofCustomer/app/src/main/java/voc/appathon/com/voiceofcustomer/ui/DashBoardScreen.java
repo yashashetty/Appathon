@@ -1,32 +1,24 @@
-package voc.appathon.com.voiceofcustomer;
+package voc.appathon.com.voiceofcustomer.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Display;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import voc.appathon.com.voiceofcustomer.ui.BaseAcitivity;
-import voc.appathon.com.voiceofcustomer.ui.CompletedSurveyFragment;
-import voc.appathon.com.voiceofcustomer.ui.InProgressFragment;
+import voc.appathon.com.voiceofcustomer.R;
+import voc.appathon.com.voiceofcustomer.utils.StringUtils;
 //main
 
-public class MainActivity extends BaseAcitivity {
+public class DashBoardScreen extends BaseAcitivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +84,10 @@ public class MainActivity extends BaseAcitivity {
         }
     }
     private void setupViewPager(ViewPager viewPager) {
+        int i=6;//TODO : come from db
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new CompletedSurveyFragment(), "ONE");
-        adapter.addFrag(new InProgressFragment(), "TWO");
+        adapter.addFrag(new CompletedSurveyFragment(), StringUtils.getStringfrmRes(R.string.in_progress_Survey, this)+"("+i+")");
+        adapter.addFrag(new InProgressFragment(), StringUtils.getStringfrmRes(R.string.completed_survey, this)+"("+i+")");
 
         viewPager.setAdapter(adapter);
     }
