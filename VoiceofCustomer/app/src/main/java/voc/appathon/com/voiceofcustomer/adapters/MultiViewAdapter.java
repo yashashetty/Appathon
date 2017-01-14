@@ -66,7 +66,7 @@ public class MultiViewAdapter extends RecyclerView.Adapter {
             super(itemView);
 
             this.txtType = (TextView) itemView.findViewById(R.id.type);
-            this.fab = (FloatingActionButton) itemView.findViewById(R.id.fab);
+           // this.fab = (FloatingActionButton) itemView.findViewById(R.id.fab);
         }
     }
 
@@ -118,6 +118,7 @@ public class MultiViewAdapter extends RecyclerView.Adapter {
             switch (object.type) {
                 case SurveyResponseType.TEXT_TYPE:
                     ((TextTypeViewHolder) holder).txtType.setText(object.text);
+
 
                     break;
                 case SurveyResponseType.IMAGE_TYPE:

@@ -45,9 +45,9 @@ public class DashBoardScreen extends BaseAcitivity {
     }
 
     private void initViews() {
-        TextView create_survey = (TextView) findViewById(R.id.create_survey);
+        /*TextView create_survey = (TextView) findViewById(R.id.create_survey);
         TextView add_survey = (TextView) findViewById(R.id.add_survey);
-        TextView edit_survey = (TextView) findViewById(R.id.edit_survey);
+        TextView edit_survey = (TextView) findViewById(R.id.edit_survey);*/
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
