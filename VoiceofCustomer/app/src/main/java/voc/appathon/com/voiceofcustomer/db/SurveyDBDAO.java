@@ -1,27 +1,14 @@
 package voc.appathon.com.voiceofcustomer.db;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.util.Log;
-
-
-
-import voc.appathon.com.voiceofcustomer.model.Survey;
-
-
 public class SurveyDBDAO extends BaseDBDAO {
 
-    public SurveyDBDAO(Context context) {
+   /* public SurveyDBDAO(Context context) {
         super(context);
     }
 
 
 
-    /*static final String WHERE_ID_EQUALS = DBHelper.KEY_TILESINFO_ITEMID
+    static final String WHERE_ID_EQUALS = DBHelper.KEY_TILESINFO_ITEMID
             + " =?";*//*
 
 

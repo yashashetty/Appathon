@@ -1,5 +1,6 @@
 package voc.appathon.com.voiceofcustomer.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +21,8 @@ import voc.appathon.com.voiceofcustomer.R;
 //main
 
 public class DashBoardScreen extends BaseAcitivity {
-
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,19 @@ public class DashBoardScreen extends BaseAcitivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.survey);
 
-        initViews();
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+        if (mFirebaseUser == null) {
+            // Not logged in, launch the Log In activity
+            loadLogInView();
+        }else{
+            initViews();
+        }
+
+
+
+
 
 
 
@@ -40,6 +57,14 @@ public class DashBoardScreen extends BaseAcitivity {
                         .setAction("Action", null).show();
             }
         });*/
+    }
+
+
+    private void loadLogInView() {
+        Intent intent = new Intent(this, LogInActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void initViews() {
