@@ -11,6 +11,9 @@
     <string name="open_survey">Create Survey</string>
     <string name="new_Survey">New Survey</string>
 
+    <string name="in_progress_Survey">In Progress Survey</string>
+    <string name="completed_survey">Completed Survey</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

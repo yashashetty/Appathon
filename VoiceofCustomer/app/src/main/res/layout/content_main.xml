@@ -10,8 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-    tools:context="voc.appathon.com.voiceofcustomer.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".ui.DashBoardScreen"
+    tools:showIn="@layout/activity_dashboard">
 
     <TextView
         android:layout_width="wrap_content"
