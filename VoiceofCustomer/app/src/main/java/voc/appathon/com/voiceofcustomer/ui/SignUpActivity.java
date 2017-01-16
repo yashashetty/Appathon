@@ -67,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        //mFirebaseAuth.getCurrentUser().getProviders().
                                         Intent intent = new Intent(SignUpActivity.this, DashBoardScreen.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
