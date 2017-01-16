@@ -5,61 +5,70 @@ package voc.appathon.com.voiceofcustomer.model;
  */
 public class Survey {
 
-    public String surveyID;
-    public String surveyQ;
-    public String surveyAns;
-    public String surveyType;
-    public String surveyStatus;
+    public String surveyName;
+    public String surveyTitle;
+    public Questions questions;
+    public String totalResponse;
+    public String likes;
+    public String user_name ;
+    public String user_choice;
 
 
-    public Survey(String surveyID,String surveyQ,String surveyAns,String surveyType, String surveyStatus )
-    {
-        this.surveyID=surveyID;
-        this.surveyQ=surveyQ;
-        this.surveyAns=surveyAns;
-        this.surveyType=surveyType;
-        this.surveyStatus=surveyStatus;
-        this.surveyAns=surveyAns;
+
+    public String getSurveyName() {
+        return surveyName;
     }
 
-    public String getSurveyID() {
-        return surveyID;
+    public void setSurveyName(String surveyName) {
+        this.surveyName = surveyName;
     }
 
-    public void setSurveyID(String surveyID) {
-        this.surveyID = surveyID;
+    public String getSurveyTitle() {
+        return surveyTitle;
     }
 
-    public String getSurveyQ() {
-        return surveyQ;
+    public void setSurveyTitle(String surveyTitle) {
+        this.surveyTitle = surveyTitle;
     }
 
-    public void setSurveyQ(String surveyQ) {
-        this.surveyQ = surveyQ;
+    public Questions getQuestions() {
+        return questions;
     }
 
-    public String getSurveyAns() {
-        return surveyAns;
+    public void setQuestions(Questions questions) {
+        this.questions = questions;
     }
 
-    public void setSurveyAns(String surveyAns) {
-        this.surveyAns = surveyAns;
+    public String getTotalResponse() {
+        return totalResponse;
     }
 
-    public String getSurveyType() {
-        return surveyType;
+    public void setTotalResponse(String totalResponse) {
+        this.totalResponse = totalResponse;
     }
 
-    public void setSurveyType(String surveyType) {
-        this.surveyType = surveyType;
+    public String getLikes() {
+        return likes;
     }
 
-    public String getSurveyStatus() {
-        return surveyStatus;
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 
-    public void setSurveyStatus(String surveyStatus) {
-        this.surveyStatus = surveyStatus;
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getUser_choice() {
+        return user_choice;
+    }
+
+    public void setUser_choice(String user_choice) {
+        this.user_choice = user_choice;
     }
 
 
