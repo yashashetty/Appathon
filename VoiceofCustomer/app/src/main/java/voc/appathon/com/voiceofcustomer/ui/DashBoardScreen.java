@@ -11,15 +11,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.*;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +28,12 @@ import voc.appathon.com.voiceofcustomer.R;
 //main
 
 public class DashBoardScreen extends BaseAcitivity {
-    private FirebaseAuth mFirebaseAuth;
+    public FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabase;
-    private String mUserId;
+    public static String mUserId;
     private  Button btnCreateSurvey;
+    private Button btnViewSurvey;
     ViewPagerAdapter adapter;
     ViewPager viewPager;
     @Override
@@ -73,7 +75,7 @@ public class DashBoardScreen extends BaseAcitivity {
 
 
 
-           // Set up ListView
+           /*// Set up ListView
             final ListView listView = (ListView) findViewById(R.id.listView);
             final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
             listView.setAdapter(adapter);
@@ -121,13 +123,21 @@ public class DashBoardScreen extends BaseAcitivity {
 
         }
 
-        btnCreateSurvey.setOnClickListener(new View.OnClickListener() {
+       btnCreateSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     /*getFragmentManager().beginTransaction()
                             .add(R.id.container, CardViewFragment.newInstance())
                             .commit();*/
-                adapter.addFrag(new CreateSurveyFragment(), "Create Survey");
+               adapter.addFrag(new CreateSurveyFragment(), "Create Survey");
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        btnViewSurvey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.addFrag(new ViewSurveyFragment(), "View Survey");
                 adapter.notifyDataSetChanged();
             }
         });
@@ -155,6 +165,7 @@ public class DashBoardScreen extends BaseAcitivity {
         TextView add_survey = (TextView) findViewById(R.id.add_survey);
         TextView edit_survey = (TextView) findViewById(R.id.edit_survey);*/
         btnCreateSurvey = (Button)findViewById(R.id.create_survey);
+        btnViewSurvey   =(Button)findViewById(R.id.view_survey);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);

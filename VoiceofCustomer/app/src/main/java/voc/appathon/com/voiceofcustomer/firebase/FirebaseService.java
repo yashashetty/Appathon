@@ -24,7 +24,7 @@ public class FirebaseService {
     private static final String NODE_SURVEY ="Survey";
     private static final String NODE_USERS ="Users";
     private static final String NODE_USERS_SURVEYS ="Surveys";
-
+    Survey survey ;
     public static synchronized FirebaseService getInstance() {
         if (instance == null) {
             instance = new FirebaseService();
@@ -52,15 +52,31 @@ public class FirebaseService {
        DatabaseReference data =  mDatabase.child(NODE_ROOT).child(NODE_USERS).child(survey.getUserID()).child(NODE_USERS_SURVEYS);
        DatabaseReference create_data = data.push();
        UserSurvey userSurvey= new UserSurvey();
-       userSurvey.setSurveyID(key);
-       create_data.setValue(userSurvey);
+       //userSurvey.setSurveyID(key);
+       create_data.setValue(key);
 
    }
 
-    public Query getSurvey(String userID){
-        Query recentPostsQuery = mDatabase.child(userID);
+    public Query getSurveyOfUserid(String userID){
+
+        Query surveyIDQuery = mDatabase.child(NODE_ROOT).child(NODE_USERS).child(userID).child(NODE_USERS_SURVEYS);
+
+
+        return surveyIDQuery;
+
 
     }
 
+
+    public Query getSurvey(String surveyID) {
+
+        Query query = mDatabase.child(NODE_ROOT).child(NODE_SURVEY).child(surveyID);
+
+         return query;
+
+        //GenericTypeIndicator<List<Survey>> typeIndicator = new GenericTypeIndicator<List<Survey>>() {};
+        //List<Beer> beers = snapshot.getValue(typeIndicator);
+
+    }
 
 }
