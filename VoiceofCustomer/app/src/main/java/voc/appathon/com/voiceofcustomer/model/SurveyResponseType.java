@@ -1,7 +1,7 @@
 package voc.appathon.com.voiceofcustomer.model;
 
 /**
- * Created by tanu.rawal on 1/13/2017.
+ * Created by yshetty on 1/16/17.
  */
 public class SurveyResponseType {
     public static final int TEXT_TYPE=0;
