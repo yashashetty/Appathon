@@ -34,6 +34,12 @@
             android:name=".ui.SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.SurveyCreationActivity"
+            android:label="@string/create_survey"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
 
 
     </application>

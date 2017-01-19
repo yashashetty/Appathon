@@ -140,18 +140,18 @@ public class DashBoardScreen extends BaseAcitivity implements View.OnClickListen
 
         }
 
-        btnCreateSurvey.setOnClickListener(new View.OnClickListener() {
+       /* btnCreateSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    /*getFragmentManager().beginTransaction()
+                    *//*getFragmentManager().beginTransaction()
                             .add(R.id.container, CardViewFragment.newInstance())
-                            .commit();*/
+                            .commit();*//*
                adapter.addFrag(new CreateSurveyFragment(), "Create Survey");
                 adapter.notifyDataSetChanged();
                //// adapter.addFrag(new CreateSurveyFragment(), "Create Survey"); //todo
             ////    adapter.notifyDataSetChanged();//todo
             }
-        });
+        });*/
 
         btnViewSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
