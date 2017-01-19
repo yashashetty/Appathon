@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +23,6 @@ import voc.appathon.com.voiceofcustomer.model.Survey;
 
 public class CreateSurveyFragment extends Fragment{
     private CardView mCardView;
-    private FirebaseUser mFirebaseUser;
-    private FirebaseAuth mFirebaseAuth;
     FirebaseService firebaseService;
     @Nullable
     @Override
@@ -41,8 +36,6 @@ public class CreateSurveyFragment extends Fragment{
         mCardView = (CardView) view.findViewById(R.id.cardview);
 
         firebaseService = FirebaseService.getInstance();
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
         AddSurvey();
 
 
@@ -55,7 +48,6 @@ public class CreateSurveyFragment extends Fragment{
     public void AddSurvey(){
         Survey survey = new Survey ();
         survey.setSurveyTitle("Customer Satisfaction Survey");
-        survey.userID = mFirebaseUser.getUid();
         Questions questions = new Questions();
 
         MultiChoice multichoiceQuestion = new MultiChoice();
