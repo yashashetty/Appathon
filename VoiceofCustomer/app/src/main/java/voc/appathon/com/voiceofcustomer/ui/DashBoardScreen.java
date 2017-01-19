@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import voc.appathon.com.voiceofcustomer.R;
+import voc.appathon.com.voiceofcustomer.firebase.FirebaseService;
 //main
 
 public class DashBoardScreen extends BaseAcitivity {
@@ -34,6 +35,7 @@ public class DashBoardScreen extends BaseAcitivity {
     public static String mUserId;
     private  Button btnCreateSurvey;
     private Button btnViewSurvey;
+    private Button btnIncreaseResponse;
     ViewPagerAdapter adapter;
     ViewPager viewPager;
     @Override
@@ -142,6 +144,13 @@ public class DashBoardScreen extends BaseAcitivity {
             }
         });
 
+        btnIncreaseResponse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseService.getInstance().updateResponse("-KacvOAOACaUr0Q4L6br");
+            }
+        });
+
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +175,7 @@ public class DashBoardScreen extends BaseAcitivity {
         TextView edit_survey = (TextView) findViewById(R.id.edit_survey);*/
         btnCreateSurvey = (Button)findViewById(R.id.create_survey);
         btnViewSurvey   =(Button)findViewById(R.id.view_survey);
+        btnIncreaseResponse = (Button)findViewById(R.id.edit_survey);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);

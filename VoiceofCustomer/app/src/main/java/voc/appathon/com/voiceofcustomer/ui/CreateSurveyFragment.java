@@ -48,7 +48,6 @@ public class CreateSurveyFragment extends Fragment{
     public void AddSurvey(){
         Survey survey = new Survey ();
         survey.setSurveyTitle("Customer Satisfaction Survey");
-        survey.userID = DashBoardScreen.mUserId;
         Questions questions = new Questions();
 
         MultiChoice multichoiceQuestion = new MultiChoice();
