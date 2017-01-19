@@ -7,6 +7,12 @@
 
 
     <string name="survey">"Survey "</string>
+    <string name="create_survey">"Create/\nConfigure\nSurvey "</string>
+    <string name="add_survey">"Add\/New\nSurvey "</string>
+    <string name="view_survey">"View\/Edit\nSurvey "</string>
+    <string name="survey_name">"Survey Name/Title"</string>
+    <string name="survey_desc">"Survey Description/Uplaod Image"</string>
+    <string name="survey_end_date">"Survey End Date"</string>
     <string name="Closed_survey">Closed Survey</string>
     <string name="open_survey">Create Survey</string>
     <string name="new_Survey">New Survey</string>
@@ -34,4 +40,12 @@
     <string name="title_activity_log_in">LogInActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
 
+    <!--- Bottom Bar -->
+
+    <string name="response">Responses</string>
+    <string name="queries">Queries</string>
+    <string name="top">Top</string>
+    <string name="bottom">Bottom</string>
+    <string name="like">Like</string>
+    <string name="unlike">Unlike</string>
 </resources>

@@ -56,6 +56,7 @@ public class BaseAcitivity extends AppCompatActivity {
         getLayoutInflater().inflate(layoutResID, actContent, true);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle(getResources().getString(R.string.app_name));
         toolbar.setNavigationIcon(android.R.drawable.ic_input_add);
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);*/

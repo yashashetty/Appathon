@@ -4,7 +4,7 @@ package voc.appathon.com.voiceofcustomer.adapters;
  * Created by tanu.rawal on 1/13/2017.
  */
 
-/*import android.content.Context;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
@@ -23,7 +23,7 @@ import voc.appathon.com.voiceofcustomer.model.SurveyResponseType;
 /**
  * Created by anupamchugh on 09/02/16.
  */
-/*public class MultiViewAdapter extends RecyclerView.Adapter {
+public class MultiViewAdapter extends RecyclerView.Adapter {
 
     private ArrayList<SurveyResponseType> dataSet;
     Context mContext;
@@ -148,7 +148,7 @@ import voc.appathon.com.voiceofcustomer.model.SurveyResponseType;
                                 ((AudioTypeViewHolder) holder).fab.setImageResource(R.drawable.mute);
                                 fabStateVolume = true;*/
 
-                           /* }
+                            }
                         }
                     });
                     break;
@@ -160,4 +160,4 @@ import voc.appathon.com.voiceofcustomer.model.SurveyResponseType;
     public int getItemCount() {
         return dataSet.size();
     }
-}*/
+}

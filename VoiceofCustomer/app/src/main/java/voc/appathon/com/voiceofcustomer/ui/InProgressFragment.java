@@ -3,6 +3,10 @@ package voc.appathon.com.voiceofcustomer.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import voc.appathon.com.voiceofcustomer.R;
+import voc.appathon.com.voiceofcustomer.adapters.MultiViewAdapter;
+import voc.appathon.com.voiceofcustomer.model.SurveyResponseType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,7 +77,7 @@ public class InProgressFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         ArrayList list= new ArrayList();
-        /*list.add(new SurveyResponseType(SurveyResponseType.TEXT_TYPE,"Hello. This is the Text-only View Type. Nice to meet you",0));
+        list.add(new SurveyResponseType(SurveyResponseType.TEXT_TYPE,"Hello. This is the Text-only View Type. Nice to meet you",0));
         list.add(new SurveyResponseType(SurveyResponseType.TEXT_TYPE,"Hi. I display a cool image too besides the omnipresent TextView.",R.drawable.thank_u));
         //list.add(new SurveyResponseType(SurveyResponseType.AUDIO_TYPE,"Hey. Pressing the FAB button will playback an audio file on loop.",R.raw.sound));
         list.add(new SurveyResponseType(SurveyResponseType.IMAGE_TYPE,"Hi again. Another cool image here. Which one is better?",R.drawable.thank_u));
@@ -82,7 +88,7 @@ public class InProgressFragment extends Fragment {
         RecyclerView mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(adapter);*/
+        mRecyclerView.setAdapter(adapter);
     }
 
     /* // TODO: Rename method, update argument and hook method into UI event

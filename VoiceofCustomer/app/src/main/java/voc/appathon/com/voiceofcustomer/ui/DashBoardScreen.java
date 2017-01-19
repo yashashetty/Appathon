@@ -1,7 +1,10 @@
 package voc.appathon.com.voiceofcustomer.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,29 +17,39 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import voc.appathon.com.voiceofcustomer.R;
+import voc.appathon.com.voiceofcustomer.utils.StringUtils;
+import com.aurelhubert.ahbottomnavigation.*;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 //main
 
-public class DashBoardScreen extends BaseAcitivity {
+public class DashBoardScreen extends BaseAcitivity implements View.OnClickListener {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabase;
     private String mUserId;
+    private Bundle bundle;
     private  Button btnCreateSurvey;
-    ViewPagerAdapter adapter;
+    //ViewPagerAdapter adapter;
     ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bundle = savedInstanceState;
+
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,11 +70,11 @@ public class DashBoardScreen extends BaseAcitivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     System.out.println(dataSnapshot.getValue());
-                    if(dataSnapshot.getValue()!= null && Boolean.parseBoolean(dataSnapshot.getValue().toString())){
+                    /*if(dataSnapshot.getValue()!= null && Boolean.parseBoolean(dataSnapshot.getValue().toString())){
                         btnCreateSurvey.setVisibility(View.VISIBLE);
                     }else{
                         btnCreateSurvey.setVisibility(View.GONE);
-                    }
+                    }*/
 
                 }
 
@@ -127,8 +140,8 @@ public class DashBoardScreen extends BaseAcitivity {
                     /*getFragmentManager().beginTransaction()
                             .add(R.id.container, CardViewFragment.newInstance())
                             .commit();*/
-                adapter.addFrag(new CreateSurveyFragment(), "Create Survey");
-                adapter.notifyDataSetChanged();
+               //// adapter.addFrag(new CreateSurveyFragment(), "Create Survey"); //todo
+            ////    adapter.notifyDataSetChanged();//todo
             }
         });
 
@@ -142,6 +155,26 @@ public class DashBoardScreen extends BaseAcitivity {
         });*/
     }
 
+ @Override
+    public void onClick(View view) {
+
+        switch(view.getId()){
+
+            case R.id.create_survey:
+
+                Intent createSuvey = new Intent(this, SurveyCreationActivity.class);
+                startActivity(createSuvey);
+
+                break;
+            case R.id.add_survey:
+                break;
+            case R.id.edit_survey:
+                break;
+
+
+        }
+
+    }
 
     private void loadLogInView() {
         Intent intent = new Intent(this, LogInActivity.class);
@@ -150,52 +183,79 @@ public class DashBoardScreen extends BaseAcitivity {
         startActivity(intent);
     }
 
-    private void initViews() {
-        /*TextView create_survey = (TextView) findViewById(R.id.create_survey);
-        TextView add_survey = (TextView) findViewById(R.id.add_survey);
-        TextView edit_survey = (TextView) findViewById(R.id.edit_survey);*/
-        btnCreateSurvey = (Button)findViewById(R.id.create_survey);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+     private void initViews() {
+         Button create_survey = (Button) findViewById(R.id.create_survey);
+         create_survey.setOnClickListener(this);
+         btnCreateSurvey = (Button) findViewById(R.id.create_survey);
+         Button add_survey = (Button) findViewById(R.id.add_survey);
+         add_survey.setOnClickListener(this);
+         Button edit_survey = (Button) findViewById(R.id.edit_survey);
+         edit_survey.setOnClickListener(this);
+         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+         tabLayout.setupWithViewPager(viewPager);
+         final String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
-    }
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+         AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.response), R.drawable.bell_icon, Color.parseColor(colors[0]));
+         AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.queries), R.drawable.bell_icon, Color.parseColor(colors[1]));
+         AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.top), R.drawable.bell_icon, Color.parseColor(colors[2]));
+         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.like), R.drawable.bell_icon, Color.parseColor(colors[2]));
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
+         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
+         bottomNavigation.addItem(item1);
+         bottomNavigation.addItem(item2);
+         bottomNavigation.addItem(item3);
+         bottomNavigation.addItem(item4);
+         bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
+         bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
+         bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
+         //  Enables Reveal effect
+         bottomNavigation.setColored(true);
+         bottomNavigation.setCurrentItem(0);
+         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+             @Override
+             public void onTabSelected(int position, boolean wasSelected) {
+                 //fragment.updateColor(Color.parseColor(colors[position]));
+             }
+         });
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
+     }
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
+         class ViewPagerAdapter extends FragmentPagerAdapter {
+             private final List<Fragment> mFragmentList = new ArrayList<>();
+             private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public void addFrag(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
+             public ViewPagerAdapter(FragmentManager manager) {
+                 super(manager);
+             }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
+             @Override
+             public Fragment getItem(int position) {
+                 return mFragmentList.get(position);
+             }
+
+             @Override
+             public int getCount() {
+                 return mFragmentList.size();
+             }
+
+             public void addFrag(Fragment fragment, String title) {
+                 mFragmentList.add(fragment);
+                 mFragmentTitleList.add(title);
+             }
+
+             @Override
+             public CharSequence getPageTitle(int position) {
+                 return mFragmentTitleList.get(position);
+             }
+         }
     private void setupViewPager(ViewPager viewPager) {
         int i=6;//TODO : come from db
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        //adapter.addFrag(new CompletedSurveyFragment(), StringUtils.getStringfrmRes(R.string.in_progress_Survey, this)+"("+i+")");
-        //adapter.addFrag(new InProgressFragment(), StringUtils.getStringfrmRes(R.string.completed_survey, this)+"("+i+")");
+        adapter.addFrag(new CompletedSurveyFragment(), StringUtils.getStringfrmRes(R.string.in_progress_Survey, this)+"("+i+")");
+        adapter.addFrag(new InProgressFragment(), StringUtils.getStringfrmRes(R.string.completed_survey, this)+"("+i+")");
 
         viewPager.setAdapter(adapter);
     }

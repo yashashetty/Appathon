@@ -57,10 +57,10 @@ public class FirebaseService {
 
    }
 
-    public Query getSurvey(String userID){
+   /* public Query getSurvey(String userID){
         Query recentPostsQuery = mDatabase.child(userID);
 
-    }
+    }*/
 
 
 }
