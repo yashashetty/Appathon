@@ -15,15 +15,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import voc.appathon.com.voiceofcustomer.R;
-import voc.appathon.com.voiceofcustomer.utils.StringUtils;
-import com.aurelhubert.ahbottomnavigation.*;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,10 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.google.firebase.database.ValueEventListener;
 
 import voc.appathon.com.voiceofcustomer.R;
 import voc.appathon.com.voiceofcustomer.firebase.FirebaseService;
+import voc.appathon.com.voiceofcustomer.utils.StringUtils;
 //main
 
 public class DashBoardScreen extends BaseAcitivity implements View.OnClickListener {
@@ -224,10 +218,10 @@ public class DashBoardScreen extends BaseAcitivity implements View.OnClickListen
         tabLayout.setupWithViewPager(viewPager);
          final String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
-         AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.response), R.drawable.bell_icon, Color.parseColor(colors[0]));
-         AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.queries), R.drawable.bell_icon, Color.parseColor(colors[1]));
-         AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.top), R.drawable.bell_icon, Color.parseColor(colors[2]));
-         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.like), R.drawable.bell_icon, Color.parseColor(colors[2]));
+         AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.response), R.drawable.circle_icon, R.color.color1);
+         AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.queries), R.drawable.circle_icon, R.color.color2);
+         AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.top), R.drawable.circle_icon, R.color.color3);
+         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.like), R.drawable.circle_icon,R.color.color1);
 
          AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
          bottomNavigation.addItem(item1);
@@ -240,12 +234,12 @@ public class DashBoardScreen extends BaseAcitivity implements View.OnClickListen
          //  Enables Reveal effect
          bottomNavigation.setColored(true);
          bottomNavigation.setCurrentItem(0);
-         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+         /*bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
              @Override
              public void onTabSelected(int position, boolean wasSelected) {
                  //fragment.updateColor(Color.parseColor(colors[position]));
              }
-         });
+         });*/
 
     }
 

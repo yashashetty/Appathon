@@ -1,24 +1,20 @@
 package voc.appathon.com.voiceofcustomer.ui;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -27,7 +23,6 @@ import java.io.OutputStream;
 import java.util.Calendar;
 
 import voc.appathon.com.voiceofcustomer.R;
-
 public class SurveyCreationActivity extends BaseAcitivity implements View.OnClickListener {
 
     private static final int SELECT_PICTURE = 0;
@@ -55,7 +50,7 @@ public class SurveyCreationActivity extends BaseAcitivity implements View.OnClic
 
     private void initViews() {
         Button mpickPhoto = (Button) findViewById(R.id.photo);
-        mpickPhoto.setOnClickListener(this);
+        mpickPhoto.setOnClickListener(SurveyCreationActivity.this);
 
         Button calender = (Button) findViewById(R.id.calender);
         mpickPhoto.setOnClickListener(this);
@@ -81,13 +76,13 @@ public class SurveyCreationActivity extends BaseAcitivity implements View.OnClic
 
     }
 
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+   /* private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
            /* et.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
                     + selectedYear);*/
-        }
-    };
+       // }
+   //};*/
 
     private void pickImage() {
         final CharSequence[] items = {"Take Photo", "Choose from Library",
@@ -164,8 +159,8 @@ public class SurveyCreationActivity extends BaseAcitivity implements View.OnClic
                 btmapOptions.inSampleSize = 2;
 
                 bm = BitmapFactory.decodeFile(tempPath, btmapOptions);
-                mImageView = (ImageView) findViewById(R.id.survey_image);
-                mImageView.setImageBitmap(bm);
+               // mImageView = (ImageView) findViewById(R.id.survey_image);
+               // mImageView.setImageBitmap(bm);
             }
         }
     }
