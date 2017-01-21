@@ -150,8 +150,10 @@ public class DashBoardScreen extends BaseAcitivity implements View.OnClickListen
         btnViewSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.addFrag(new ViewSurveyFragment(), "View Survey");
-                adapter.notifyDataSetChanged();
+                /*adapter.addFrag(new ViewSurveyFragment(), "View Survey");
+                adapter.notifyDataSetChanged();*/
+                Intent view = new Intent(DashBoardScreen.this, AnalyzeScreen.class);
+                startActivity(view);
             }
         });
 
@@ -234,12 +236,17 @@ public class DashBoardScreen extends BaseAcitivity implements View.OnClickListen
          //  Enables Reveal effect
          bottomNavigation.setColored(true);
          bottomNavigation.setCurrentItem(0);
-         /*bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
              @Override
-             public void onTabSelected(int position, boolean wasSelected) {
+             public boolean onTabSelected(int position, boolean wasSelected) {
                  //fragment.updateColor(Color.parseColor(colors[position]));
+                 RatingDialog userAccountDialog = RatingDialog.getInstance();
+                 //Attach user data in bundle
+
+                 userAccountDialog.show(getSupportFragmentManager(), "user_dialog");
+                 return wasSelected;
              }
-         });*/
+         });
 
     }
 
