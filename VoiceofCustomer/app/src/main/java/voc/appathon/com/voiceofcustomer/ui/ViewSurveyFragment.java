@@ -47,6 +47,7 @@ public class ViewSurveyFragment extends Fragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot data: dataSnapshot.getChildren()){
+
                     surveyID.add(data.getValue().toString());
                 }
 
@@ -77,6 +78,7 @@ public class ViewSurveyFragment extends Fragment{
                         if(data.getKey().equals(surveyID.get(i))){
                             Survey survey1 = data.getValue(Survey.class);
                             surveys.add(survey1);
+                            Log.d("tanu","sur--------------"+survey1.getQuestions().toString());
                         }
                     }
                 }
@@ -101,6 +103,12 @@ public class ViewSurveyFragment extends Fragment{
         Log.d("Size of survey is ",Integer.toString(surveys.size()));
 
         Survey survey = surveys.get(0);
+        Log.d("tanu","title-------"+survey.getSurveyTitle().toString());
+        Log.d("tanu","cat-------"+survey.getCategory());
+        Log.d("tanu","nm-------"+survey.getSurveyName());
+        Log.d("tanu","title-------"+survey.getTotalResponse());
+        Log.d("tanu","title-------"+survey.getQuestions());
+        Log.d("tanu","title-------"+survey.getModifiedDate());
         textview1.setText(survey.getSurveyTitle().toString());
         Survey survey1 = surveys.get(1);
         textView2.setText(survey1.getSurveyTitle());

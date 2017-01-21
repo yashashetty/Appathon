@@ -51,4 +51,6 @@
     <string name="like">Like</string>
     <string name="unlike">Unlike</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string name="analyze">Analyze</string>
 </resources>
